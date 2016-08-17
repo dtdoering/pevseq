@@ -5,7 +5,7 @@
 echo "Converting FASTQ -> FASTA..."
 i=1
 while [ $i -le 59 ]; do
-  EXPT=$(find $HOME/seqdata/merged/ARRPA -maxdepth 1 | grep -Po "\b"$i"_[ATGC-]*" | head -1)
+  EXPT=$(ls -al $HOME/seqdata/merged/ARRPA | grep -Po "\b"$i"_[ATGC-]*" | head -1)
   seqtk seq -a "$EXPT".assembled.fastq > "$EXPT".assembled.fasta
   echo "Done with "$EXPT""
   ((i++))
