@@ -32,8 +32,11 @@ i=1
 while [ $i -le 59 ]; do
   EXPT=$(ls -al $HOME/seqdata/merged/ARRPA | grep -Po "\b"$i"_[ATGC-]*" | head -1)
 
-  for i in $HOMS; do
-    echo "$i: $(grep $i "$EXPT".tsv | wc -l) reads"
+  for j in $HOMS; do
+    READS=$(grep $j "$EXPT".tsv | wc -l)
+    TOTAL=$(wc -l < "$EXPT".tsv)
+    # Output like "Scer: X / TOT reads (Y.YYY %)"
+    echo "$j: "$READS" / "$TOTAL" reads ($(echo "scale=3;100*$READS/$TOTAL" | bc) %)"
 
   echo "Done with "$EXPT""
   ((i++))
