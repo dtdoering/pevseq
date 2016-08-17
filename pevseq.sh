@@ -15,7 +15,7 @@ done
 echo "BLASTing reads against input homologs..."
 i=1
 while [ $i -le 59 ]; do
-  EXPT=$(find $HOME/seqdata/merged/ARRPA -maxdepth 1 | grep -Po "\b"$i"_[ATGC-]*" | head -1)
+  EXPT=$(ls -al $HOME/seqdata/merged/ARRPA | grep -Po "\b"$i"_[ATGC-]*" | head -1)
 
   blastn -query "$EXPT".assembled.fasta -db ATX1_Homologs_Pilot.fasta -max_hsps 1 -max_target_seqs -out "$EXPT".tsv -outfmt 6
 
@@ -30,7 +30,7 @@ HOMS=($(grep ">" ATX1_Homologs_Pilot.fasta | awk '{ gsub(">","",$1); print $1 }'
 
 i=1
 while [ $i -le 59 ]; do
-  EXPT=$(find $HOME/seqdata/merged/ARRPA -maxdepth 1 | grep -Po "\b"$i"_[ATGC-]*" | head -1)
+  EXPT=$(ls -al $HOME/seqdata/merged/ARRPA | grep -Po "\b"$i"_[ATGC-]*" | head -1)
 
   for i in $HOMS; do
     echo "$i: $(grep $i "$EXPT".tsv | wc -l) reads"
