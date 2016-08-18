@@ -18,6 +18,8 @@ HOMS=($(grep ">" $HOMOLOGSFILE | awk '{ gsub(">","",$1); print $1 }'))
 
 i=1
 while [ $i -le 59 ]; do
+  echo "Starting experiment "$i""
+
   EXPT=$(ls -al $IN/assembled | grep -Po "\b"$i"_[ATGC-]*" | head -1)
 
   # merged FASTQ -> FASTA with seqtk
