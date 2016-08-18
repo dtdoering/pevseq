@@ -16,7 +16,7 @@ echo "Output directory: $OUT"
 # create array of homologs for later comparison
 # HOMS=($(grep ">" $HOMOLOGSFILE | awk '{ gsub(">","",$1); print $1 }'))
 
-HOMS=$(grep ">" ./ATX1_Homologs_Pilot.fasta | cut -f2- -d'>')
+HOMS=$(grep ">" $HOMOLOGSFILE | cut -f2- -d'>')
 
 i=1
 while [ $i -le 59 ]; do
