@@ -6,12 +6,12 @@
 ##
 
 IN=$1 # input data directory (assembled reads)
-HOMOLOGSFILE= $2 # FASTA filepath with input homologs/variants
+HOMOLOGSFILE=$2 # FASTA filepath with input homologs/variants
 OUT=$3 # destination directory (assembled FASTA, BLAST results, )
 
-echo "Working directory: ""$IN"
-echo "Input homologs: ""$HOMOLOGSFILE"
-echo "Output directory: ""$OUT"
+echo "Working directory: "$IN""
+echo "Input homologs: "$HOMOLOGSFILE""
+echo "Output directory: "$OUT""
 
 # create array of homologs for later comparison
 HOMS=($(grep ">" $HOMOLOGSFILE | awk '{ gsub(">","",$1); print $1 }'))
