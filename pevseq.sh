@@ -31,7 +31,7 @@ while [ $i -le 59 ]; do
   fi
 
   # BLAST each read against the input homologs
-  blastn -query $IN/assembled/"$EXPT".assembled.fasta -db $(dirname $HOMOLOGSFILE)/blastdbs/$(basename $HOMOLOGSFILE) -max_hsps 1 -max_target_seqs 1 -out $OUT/blastresults/"$EXPT".blastout.tsv -outfmt 6
+  blastn -query $IN/assembled/"$EXPT".assembled.fasta -db $(dirname $HOMOLOGSFILE)/blastdbs/$(basename $HOMOLOGSFILE) -max_target_seqs 1 -out $OUT/blastresults/"$EXPT".blastout.tsv -outfmt 6
 
   # count the number of each homolog
   for j in $HOMS; do
