@@ -45,9 +45,9 @@ while [ $i -le 59 ]; do
     TOTAL=$(wc -l < $OUT/blastresults/"$EXPT".blastout.tsv)
 
     # Output like "Scer: X / TOT reads (Y.YYY %)"
-    echo "$j: "$READS" / "$TOTAL" reads ($(echo "scale=3;100*$READS/$TOTAL" | bc) %)" | tee -a $OUT/"$EXPT"_counts.txt
+    echo "$j: "$READS" / "$TOTAL" reads ($(echo "scale=3;100*$READS/$TOTAL" | bc) %)" | tee $OUT/"$EXPT"_counts.txt
 
-    printf "%s,%s,%s,%s\n" "$EXPT" "$j" "$READS" "$TOTAL" > $IN/output/$(basename $IN)_counts.csv
+    printf "%s,%s,%s,%s\n" "$EXPT" "$j" "$READS" "$TOTAL" >> $IN/output/$(basename $IN)_counts.csv
 
   done
 
