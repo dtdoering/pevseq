@@ -18,6 +18,8 @@ echo "Output directory: $OUT"
 
 HOMS=$(grep ">" $HOMOLOGSFILE | cut -f2- -d'>')
 
+printf "Experiment,Homolog,Count,Total" > $IN/output/$(basename $IN)_counts.csv
+
 i=1
 while [ $i -le 59 ]; do
   echo "Starting experiment $i"
